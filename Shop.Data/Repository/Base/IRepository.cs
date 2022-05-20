@@ -1,12 +1,22 @@
-﻿using System;
+﻿using Shop.Data.Entities.Base;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Shop.Data.Repository.Base
 {
-    interface IRepository
+    public interface IRepository<T> where T : IEntity
     {
+        public void Add(T item);
+        public void AddRange(IEnumerable<T> items);
+
+        public IEnumerable<T> Find(Func<T, bool> predicate);
+
+        public T Get(int id);
+        public IEnumerable<T> GetAll();
+
+        public void Update(T item);
+        public void UpdateRange(IEnumerable<T> items);
+        public void Remove(T item);
+        public void RemoveRange(IEnumerable<T> items);
     }
 }
