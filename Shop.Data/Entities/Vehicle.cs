@@ -15,5 +15,10 @@ namespace Shop.Data.Entities
         public virtual ICollection<Deal> Deals { get; set; }
         public virtual ICollection<ShipmentRequest> Requests { get; set; }
         public virtual ICollection<ShipmentReport> Reports { get; set; }
+
+        public override string ToString()
+        {
+            return $"{ManufacturerName} {ModelName}";
+        }
     }
 }

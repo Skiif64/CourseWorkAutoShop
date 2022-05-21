@@ -14,7 +14,7 @@ namespace Shop.Data
         
         public ShopContext()
         {
-            //Database.EnsureDeleted();
+            Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 
