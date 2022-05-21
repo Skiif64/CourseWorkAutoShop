@@ -12,8 +12,8 @@ namespace Shop.Data.Entities
         public int Power { get; set; }
         public decimal Price { get; set; }
         public int Count { get; set; }
-        public virtual ICollection<DealsVehicles> Deals { get; set; }
-        public virtual ICollection<RequestsVehicles> Requests { get; set; }
-        public virtual ICollection<ReportsVehicles> Reports { get; set; }
+        public virtual ICollection<Deal> Deals { get; set; }
+        public virtual ICollection<ShipmentRequest> Requests { get; set; }
+        public virtual ICollection<ShipmentReport> Reports { get; set; }
     }
 }

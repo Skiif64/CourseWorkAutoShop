@@ -8,6 +8,6 @@ namespace Shop.Data.Entities
     {
         public int Id { get; set; }
         public DateTime OpenTime { get; set; }
-        public virtual ICollection<RequestsVehicles> Vehicles { get; set; }
+        public virtual ICollection<Vehicle> Vehicles { get; set; }
     }
 }

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.Model", "Shop.Model\Shop.Model.csproj", "{B3CF8DA8-8E32-4239-ABDB-1ED0C4671C57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.Domain", "Shop.Model\Shop.Domain.csproj", "{B3CF8DA8-8E32-4239-ABDB-1ED0C4671C57}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.Data", "Shop.Data\Shop.Data.csproj", "{79846769-2DF4-4C85-BFA8-B173A1D586AA}"
 EndProject
@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.View", "Shop.View\Shop
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7DEA564C-F55B-4C8A-8BB0-6E44D1E4E977}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "TestConsole\TestConsole.csproj", "{26056EBD-A0EC-49F3-853F-518FA4CBE7EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestConsole", "TestConsole\TestConsole.csproj", "{26056EBD-A0EC-49F3-853F-518FA4CBE7EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
