@@ -3,15 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.Model", "Shop.Model\Shop.Model.csproj", "{B3CF8DA8-8E32-4239-ABDB-1ED0C4671C57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.Domain", "Shop.Model\Shop.Domain.csproj", "{B3CF8DA8-8E32-4239-ABDB-1ED0C4671C57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.Data", "Shop.Data\Shop.Data.csproj", "{79846769-2DF4-4C85-BFA8-B173A1D586AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.Data", "Shop.Data\Shop.Data.csproj", "{79846769-2DF4-4C85-BFA8-B173A1D586AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.Services", "Shop.Services\Shop.Services.csproj", "{557D0F37-4E13-425C-8C93-052A1C69A8BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.Services", "Shop.Services\Shop.Services.csproj", "{557D0F37-4E13-425C-8C93-052A1C69A8BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.VM", "Shop.VM\Shop.VM.csproj", "{1605D141-A42A-420B-BDB2-BE6431567385}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.VM", "Shop.VM\Shop.VM.csproj", "{1605D141-A42A-420B-BDB2-BE6431567385}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.View", "Shop.View\Shop.View.csproj", "{4B3F320B-75B8-4002-9C84-3DA522172506}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.View", "Shop.View\Shop.View.csproj", "{4B3F320B-75B8-4002-9C84-3DA522172506}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7DEA564C-F55B-4C8A-8BB0-6E44D1E4E977}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestConsole", "TestConsole\TestConsole.csproj", "{26056EBD-A0EC-49F3-853F-518FA4CBE7EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,9 +43,16 @@ Global
 		{4B3F320B-75B8-4002-9C84-3DA522172506}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B3F320B-75B8-4002-9C84-3DA522172506}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B3F320B-75B8-4002-9C84-3DA522172506}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26056EBD-A0EC-49F3-853F-518FA4CBE7EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26056EBD-A0EC-49F3-853F-518FA4CBE7EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26056EBD-A0EC-49F3-853F-518FA4CBE7EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26056EBD-A0EC-49F3-853F-518FA4CBE7EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{26056EBD-A0EC-49F3-853F-518FA4CBE7EC} = {7DEA564C-F55B-4C8A-8BB0-6E44D1E4E977}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {299567F5-5C3F-40BC-A9B0-D6FB210691A4}
