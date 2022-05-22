@@ -6,14 +6,14 @@ using System.Linq;
 
 namespace Shop.Services
 {
-    public class AutoShopSellService
+    public class AutoShopSellService : IAutoShopSellService
     {
         private IDataService _data;
         public AutoShopSellService(IDataService data)
         {
             _data = data;
         }
-        public void SellVehicle(Customer customer, List<Vehicle> vehicles)
+        public void SellVehicle(Customer customer, ICollection<Vehicle> vehicles)
         {
             if (customer is null) throw new ArgumentNullException(nameof(customer), "Покупатель равен null.");
             if (vehicles.Count==0) throw new ArgumentNullException(nameof(vehicles), "Список автомобилей пуст.");
@@ -22,7 +22,7 @@ namespace Shop.Services
 
         }
 
-        private Deal CreateDeal(Customer customer, List<Vehicle> vehicles)
+        private Deal CreateDeal(Customer customer, ICollection<Vehicle> vehicles)
         {
             var deal = new Deal
             {

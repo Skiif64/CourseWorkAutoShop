@@ -1,10 +1,8 @@
 ﻿using Shop.Data;
 using Shop.Data.Entities;
-using Shop.Data.Repository;
 using Shop.Services;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace TestConsole
 {
