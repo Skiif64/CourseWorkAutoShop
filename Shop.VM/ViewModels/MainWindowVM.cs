@@ -2,10 +2,12 @@
 using Shop.Data.Entities;
 using Shop.Services;
 using Shop.Services.Base;
+using Shop.VM.Commands;
 using Shop.VM.ViewModels.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Input;
 
 namespace Shop.VM.ViewModels
 {
@@ -15,6 +17,12 @@ namespace Shop.VM.ViewModels
         private IDataService _data;
         private IAutoShopSellService _sell;
         #region Привязки
+        private CreateVehicleVM _createVM;
+        public CreateVehicleVM CreateVM
+        {
+            get => _createVM;
+            set => Set(ref _createVM, value);
+        }
         private Deal _deal;
         public Deal Deal
         {
@@ -49,6 +57,18 @@ namespace Shop.VM.ViewModels
         }
         #endregion
         #region Команды
+        #region Обновить
+        private ICommand _updateCommand;
+        public ICommand UpdateCommand => _updateCommand ??=
+            new LambdaCommand(OnUpdateCommandExecuted, CanUpdateCommandExecute);
+        private void OnUpdateCommandExecuted(object obj)
+        {
+            Vehicles = _data.Vehicles.GetAll().ToList();
+            Customers = _data.Customers.GetAll().ToList();
+        }
+        private bool CanUpdateCommandExecute(object arg) => true;
+        
+        #endregion
         #region Создание договора
 
         #endregion
@@ -64,9 +84,10 @@ namespace Shop.VM.ViewModels
             _db = new ShopContext();
             _data = new DataService(_db);
             _sell = new AutoShopSellService(_data);
+            _createVM = new CreateVehicleVM(_data);
 
-            //Vehicles = _data.Vehicles.GetAll();
-            //Customers = _data.Customers.GetAll();
+            Vehicles = _data.Vehicles.GetAll().ToList();
+            Customers = _data.Customers.GetAll().ToList();
         }
     }
 }

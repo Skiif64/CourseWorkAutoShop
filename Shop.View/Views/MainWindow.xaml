@@ -21,7 +21,7 @@
             </MenuItem>
         </Menu>
         <StatusBar DockPanel.Dock="Bottom">
-            
+            <Button Content="Обновить" Command="{Binding UpdateCommand}" Margin="5,0"/>
         </StatusBar>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -38,12 +38,16 @@
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal" Margin="3,3">
                         <TextBlock Text="Покупатель" Margin="5,3"/>
-                        <ComboBox Width="150" Margin="5,3"/>
+                        <TextBox Width="250" Margin="5,3"/>
                     </StackPanel>
                     <TextBlock Text="Список автомобилей:" Margin="3,3"/>
                     <ListView Height="100" Margin="3,3">
                         
                     </ListView>
+                    <StackPanel Orientation="Horizontal">                        
+                        <TextBlock Text="Итоговая цена: "/>
+                        <TextBlock Text="{Binding TotalSum}"/>
+                    </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="3,3" HorizontalAlignment="Center">                        
                     <Button Content="Создать договор" Margin="5,3"/>
                     <Button Content="Очистить договор" Margin="5,3"/>
@@ -58,7 +62,29 @@
                     </Grid.RowDefinitions>
                     <GroupBox Grid.Row="0" Header="Хуйня">
                         <StackPanel Orientation="Vertical">
-                            <Button Content="Показать договоры"/>
+                            <Button Content="Показать договоры" Margin="5,3"/>
+                            <Button Content="Запросить автомобили" Margin="5,3"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Grid.Row="1" Header="Авто" DataContext="{Binding CreateVM}">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal" Margin="3,3">
+                                <TextBlock Text="Производитель" Width="100"/>
+                                <TextBox Width="120" Text="{Binding Manufacturer}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="3,3">
+                                <TextBlock Text="Модель" Width="100"/>
+                                <TextBox Width="120" Text="{Binding Name}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="3,3">
+                                <TextBlock Text="Мощность" Width="100"/>
+                                <TextBox Width="120" Text="{Binding Power}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="3,3">
+                                <TextBlock Text="Цена" Width="100"/>
+                                <TextBox Width="120" Text="{Binding Price}"/>
+                            </StackPanel>
+                            <Button Content="Создать автомобиль" Command="{Binding CreateCommand}" Margin="5,3"/>
                         </StackPanel>
                     </GroupBox>
                 </Grid>
