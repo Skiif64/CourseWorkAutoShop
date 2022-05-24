@@ -9,13 +9,13 @@ namespace Shop.Services
 {
     public class AutoShopSellService : IAutoShopSellService
     {
-        private IDataService _data;
+        private readonly IDataService _data;
         public AutoShopSellService(IDataService data)
         {
             _data = data;
         }       
 
-        public void SellVehicle(VehiclesList vehicles)
+        public void SellVehicle(VehiclesOrder vehicles)
         {
             if (vehicles.Customer is null) throw new ArgumentNullException(nameof(vehicles.Customer), "Покупатель равен null.");
             if (vehicles.Count == 0) throw new ArgumentNullException(nameof(vehicles), "Список автомобилей пуст.");

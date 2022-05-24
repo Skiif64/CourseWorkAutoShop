@@ -6,10 +6,10 @@ using System.Linq;
 
 namespace Shop.Domain
 {
-    public class VehiclesList
+    public class VehiclesOrder
     {
         public List<Vehicle> Vehicles;
-        public Customer Customer { get; }
+        public Customer Customer { get; set; }
         public decimal TotalPrice
         {
             get
