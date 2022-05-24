@@ -9,10 +9,11 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">
-                
+                <MenuItem Header="Выход"/>
+                <MenuItem Header="Установить новое подключение к бд"/>
             </MenuItem>
             <MenuItem Header="Справка">
-                
+                <MenuItem Header="О программе"/>
             </MenuItem>
         </Menu>
         <StatusBar DockPanel.Dock="Bottom">
@@ -22,7 +23,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="250"/>
             </Grid.ColumnDefinitions>
             <GroupBox Grid.Column="0" Header="Автомобили">
                 <ListBox>
@@ -39,11 +40,24 @@
                     <ListView Height="100" Margin="3,3">
                         
                     </ListView>
-                    <Button Content="Заключить договор" Margin="100,5"/>
+                    <StackPanel Orientation="Horizontal" Margin="3,3" HorizontalAlignment="Center">                        
+                    <Button Content="Создать договор" Margin="5,3"/>
+                    <Button Content="Очистить договор" Margin="5,3"/>
+                    </StackPanel>
                 </StackPanel>
             </GroupBox>
             <GroupBox Grid.Column="2" Header="Какая-то хуйня">
-
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <GroupBox Grid.Row="0" Header="Хуйня">
+                        <StackPanel Orientation="Vertical">
+                            <Button Content="Показать договоры"/>
+                        </StackPanel>
+                    </GroupBox>
+                </Grid>
             </GroupBox>
         </Grid>
     </DockPanel>
