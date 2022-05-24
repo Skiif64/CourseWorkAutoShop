@@ -6,7 +6,7 @@ namespace Shop.Data
     public class ShopContext : DbContext
     {
         private readonly string _connectionString = @"Server=localhost\SQLEXPRESS;Database=AutoShop;Trusted_Connection=True;";
-        public DbSet<Customer> Customers { get; set; }
+        
         public DbSet<Deal> Deals { get; set; }            
         public DbSet<ShipmentReport> ShipmentReports { get; set; }
         public DbSet<ShipmentRequest> ShipmentRequests { get; set; }

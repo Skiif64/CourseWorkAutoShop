@@ -17,17 +17,17 @@ namespace Shop.Services
 
         public void SellVehicle(VehiclesOrder vehicles)
         {
-            if (vehicles.Customer is null) throw new ArgumentNullException(nameof(vehicles.Customer), "Покупатель равен null.");
+            if (vehicles.CustomerName is null) throw new ArgumentNullException(nameof(vehicles.CustomerName), "Покупатель равен null.");
             if (vehicles.Count == 0) throw new ArgumentNullException(nameof(vehicles), "Список автомобилей пуст.");
-            var deal = CreateDeal(vehicles.Customer, vehicles.Vehicles);
+            var deal = CreateDeal(vehicles.CustomerName, vehicles.Vehicles);
             SaveDeal(deal);
         }
 
-        private Deal CreateDeal(Customer customer, ICollection<Vehicle> vehicles)
+        private Deal CreateDeal(string customerName, ICollection<Vehicle> vehicles)
         {
             var deal = new Deal
             {
-                Customer = customer,
+                Customer = customerName,
                 OfferTime = DateTime.Now,
                 Vehicles = vehicles,
                 TotalSum = vehicles.Sum(x => x.Price)

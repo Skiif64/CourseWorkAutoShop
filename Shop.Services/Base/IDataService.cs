@@ -5,7 +5,7 @@ namespace Shop.Services.Base
 {
     public interface IDataService
     {
-        IRepository<Customer> Customers { get; }
+        
         IRepository<Deal> Deals { get; }
         IRepository<ShipmentReport> ShipmentReports { get; }
         IRepository<ShipmentRequest> ShipmentRequests { get; }

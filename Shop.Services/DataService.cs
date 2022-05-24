@@ -11,7 +11,7 @@ namespace Shop.Services
     public class DataService : IDataService
     {
         private readonly ShopContext _db;
-        public IRepository<Customer> Customers { get; }
+        
         public IRepository<Deal> Deals { get; }
         public IRepository<ShipmentReport> ShipmentReports { get; }
         public IRepository<ShipmentRequest> ShipmentRequests { get; }
@@ -20,7 +20,7 @@ namespace Shop.Services
         public DataService(ShopContext db)
         {
             _db = db;
-            Customers = new Repository<Customer>(db);
+            
             Deals = new Repository<Deal>(db);
             ShipmentReports = new Repository<ShipmentReport>(db);
             ShipmentRequests = new Repository<ShipmentRequest>(db);

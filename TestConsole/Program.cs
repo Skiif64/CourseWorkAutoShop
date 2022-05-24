@@ -25,15 +25,12 @@ namespace TestConsole
                 Count = 1
             };
 
-            var customer = new Customer
-            {
-                Name = "Санек"
-            };
+            
             var vehicles = new List<Vehicle>();
             vehicles.Add(vehicle);
             var order = new VehiclesOrder
             {
-                Customer = customer,
+                CustomerName = "Санек",
                 Vehicles = vehicles
             };
             shopModel.SellVehicle(order);

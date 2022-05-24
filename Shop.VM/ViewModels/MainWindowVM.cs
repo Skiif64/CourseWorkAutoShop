@@ -1,5 +1,6 @@
 ﻿using Shop.Data;
 using Shop.Data.Entities;
+using Shop.Domain;
 using Shop.Services;
 using Shop.Services.Base;
 using Shop.VM.Commands;
@@ -13,7 +14,7 @@ using System.Windows.Input;
 
 namespace Shop.VM.ViewModels
 {
-    public class MainWindowVM : ViewModel, INotifyCollectionChanged
+    public class MainWindowVM : ViewModel
     {
         private ShopContext _db;
         private IDataService _data;
@@ -104,22 +105,32 @@ namespace Shop.VM.ViewModels
 
         #endregion
         #region Обновить
-        private ICommand _updateCommand;
-
-        public event NotifyCollectionChangedEventHandler CollectionChanged;
-
+        private ICommand _updateCommand;  
         public ICommand UpdateCommand => _updateCommand ??=
             new LambdaCommand(OnUpdateCommandExecuted, CanUpdateCommandExecute);
         private void OnUpdateCommandExecuted(object obj)
         {
-            Vehicles = _data.Vehicles.GetAll().ToList();
-            Customers = _data.Customers.GetAll().ToList();
+            Vehicles = _data.Vehicles.GetAll().ToList();            
         }
         private bool CanUpdateCommandExecute(object arg) => true;
 
         #endregion
         #region Создание договора
-
+        private ICommand _createDealCommand;
+        public ICommand CreateDealCommand => _createDealCommand ??=
+            new LambdaCommand(OnCreateDealCommandExecuted, CanCreateDealCommandExecute);
+        private void OnCreateDealCommandExecuted(object obj)
+        {
+            
+            var order = new VehiclesOrder
+            {
+                CustomerName = CustomerFullName,
+                Vehicles = VehiclesCart.ToList()
+            };
+            _sell.SellVehicle(order);
+        }
+        private bool CanCreateDealCommandExecute(object arg) => VehiclesCart.Count != 0;
+        
         #endregion
         #region Отмена договора
 
@@ -133,11 +144,10 @@ namespace Shop.VM.ViewModels
             _db = new ShopContext();
             _data = new DataService(_db);
             _sell = new AutoShopSellService(_data);
-            _createVM = new CreateVehicleVM(_data);
+            _createVM = new CreateVehicleVM(_data);                 
+            VehiclesCart = new ObservableCollection<Vehicle>();
 
             Vehicles = _data.Vehicles.GetAll().ToList();
-            Customers = _data.Customers.GetAll().ToList();
-            VehiclesCart = new ObservableCollection<Vehicle>();
         }
     }
 }

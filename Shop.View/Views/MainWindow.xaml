@@ -61,7 +61,7 @@
                         <TextBlock Text="{Binding TotalSum}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="3,3" HorizontalAlignment="Center">                        
-                    <Button Content="Создать договор" Margin="5,3"/>
+                    <Button Content="Создать договор"  Command="{Binding CreateDealCommand}" Margin="5,3"/>
                     <Button Content="Очистить договор" Margin="5,3"/>
                     </StackPanel>
                 </StackPanel>

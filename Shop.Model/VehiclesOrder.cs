@@ -9,7 +9,7 @@ namespace Shop.Domain
     public class VehiclesOrder
     {
         public List<Vehicle> Vehicles;
-        public Customer Customer { get; set; }
+        public string CustomerName { get; set; }
         public decimal TotalPrice
         {
             get
