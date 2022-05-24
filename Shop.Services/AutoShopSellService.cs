@@ -38,6 +38,7 @@ namespace Shop.Services
         private void SaveDeal (Deal deal)
         {
             _data.Deals.Add(deal);
+            _data.Complete();
         }        
     }
 }

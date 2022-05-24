@@ -1,5 +1,4 @@
-﻿using Shop.View.Views;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,25 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Shop.View
+namespace Shop.View.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Логика взаимодействия для DocumentView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class DocumentView : Window
     {
-        public MainWindow()
+        public DocumentView()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var window = new DocumentView();
-            window.ShowDialog();
         }
     }
 }

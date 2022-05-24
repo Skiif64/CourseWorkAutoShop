@@ -74,7 +74,7 @@
                     </Grid.RowDefinitions>
                     <GroupBox Grid.Row="0" Header="Хуйня">
                         <StackPanel Orientation="Vertical">
-                            <Button Content="Показать договоры" Margin="5,3"/>
+                            <Button Content="Показать договоры" Click="Button_Click" Margin="5,3"/>
                             <Button Content="Запросить автомобили" Margin="5,3"/>
                         </StackPanel>
                     </GroupBox>
