@@ -15,7 +15,7 @@ namespace Shop.Data
         public ShopContext(string connectionString = null)
         {
             if (connectionString != null) _connectionString = connectionString;
-            Database.EnsureDeleted();
+            //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 
