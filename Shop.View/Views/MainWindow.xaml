@@ -30,18 +30,24 @@
                 <ColumnDefinition Width="250"/>
             </Grid.ColumnDefinitions>
             <GroupBox Grid.Column="0" Header="Автомобили">
-                <ListBox ItemsSource="{Binding Vehicles}">
-                    
-                </ListBox>
+                <DockPanel>
+                    <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Center">
+                        <Button Content="Добавить" Command="{Binding AddVehicleCommand}" Margin="5,3"/>
+                    </StackPanel>
+                    <ListBox ItemsSource="{Binding Vehicles}" SelectedItem="{Binding SelectedVehicle}">
+
+                    </ListBox>
+                </DockPanel>
+                
             </GroupBox>
             <GroupBox Grid.Column="1" Header="Состав договора">
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal" Margin="3,3">
                         <TextBlock Text="Покупатель" Margin="5,3"/>
-                        <TextBox Width="250" Margin="5,3"/>
+                        <TextBox Width="250" Text="{Binding CustomerFullName}" Margin="5,3"/>
                     </StackPanel>
                     <TextBlock Text="Список автомобилей:" Margin="3,3"/>
-                    <ListView Height="100" Margin="3,3">
+                    <ListView Height="100" ItemsSource="{Binding VehiclesCart}" Margin="3,3">
                         
                     </ListView>
                     <StackPanel Orientation="Horizontal">                        

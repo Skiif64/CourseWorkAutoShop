@@ -29,17 +29,13 @@ namespace Shop.VM.ViewModels
             get => _deal;
             set => Set(ref _deal, value);
         }
-        private decimal _totalSum;
-        public decimal TotalSum
+        public decimal TotalSum => _vehicles.Sum(x => x.Price);
+
+        private string _customerFullName;
+        public string CustomerFullName
         {
-            get => _totalSum;
-            set => Set(ref _totalSum, value);
-        }
-        private Customer _selectedCustomer;
-        public Customer SelectedCustomer
-        {
-            get => _selectedCustomer;
-            set => Set(ref _selectedCustomer, value);
+            get => _customerFullName;
+            set => Set(ref _customerFullName, value);
         }
 
         private IEnumerable<Customer> _customers;
@@ -55,8 +51,31 @@ namespace Shop.VM.ViewModels
             get => _vehicles;
             set => Set(ref _vehicles, value);
         }
+        private Vehicle _selectedVehicle;
+        public Vehicle SelectedVehicle
+        {
+            get => _selectedVehicle;
+            set => Set(ref _selectedVehicle, value);
+        }
+        private List<Vehicle> _vehiclesCart;
+        public List<Vehicle> VehiclesCart
+        {
+            get => _vehiclesCart;
+            set => Set(ref _vehiclesCart, value);
+        }
         #endregion
         #region Команды
+        #region Добавить авто в договор
+        private ICommand _addVehicleCommand;
+        public ICommand AddVehicleCommand => _addVehicleCommand ??=
+            new LambdaCommand(OnAddVehicleCommandExecuted, CanAddVehicleCommandExecute);
+        private void OnAddVehicleCommandExecuted(object obj)
+        {
+            VehiclesCart.Add(SelectedVehicle);
+        }
+        private bool CanAddVehicleCommandExecute(object arg) => SelectedVehicle != null;
+        
+        #endregion
         #region Обновить
         private ICommand _updateCommand;
         public ICommand UpdateCommand => _updateCommand ??=
