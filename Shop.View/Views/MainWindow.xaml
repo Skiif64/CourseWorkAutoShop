@@ -34,7 +34,9 @@
                     <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Center">
                         <Button Content="Добавить" Command="{Binding AddVehicleCommand}" Margin="5,3"/>
                     </StackPanel>
-                    <ListBox ItemsSource="{Binding Vehicles}" SelectedItem="{Binding SelectedVehicle}">
+                    <ListBox ItemsSource="{Binding Vehicles}"
+                             SelectedItem="{Binding SelectedVehicle}"
+                             SelectionMode="Single">
 
                     </ListBox>
                 </DockPanel>
@@ -47,9 +49,13 @@
                         <TextBox Width="250" Text="{Binding CustomerFullName}" Margin="5,3"/>
                     </StackPanel>
                     <TextBlock Text="Список автомобилей:" Margin="3,3"/>
-                    <ListView Height="100" ItemsSource="{Binding VehiclesCart}" Margin="3,3">
+                    <ListBox Height="100" ItemsSource="{Binding VehiclesCart}"
+                             SelectedItem="{Binding SelectedCartVehicle}"
+                             SelectionMode="Single"                             
+                             Margin="3,3">
                         
-                    </ListView>
+                    </ListBox>
+                    <Button Content="Удалить" Command="{Binding RemoveVehicleCommand}" HorizontalAlignment="Left"/>
                     <StackPanel Orientation="Horizontal">                        
                         <TextBlock Text="Итоговая цена: "/>
                         <TextBlock Text="{Binding TotalSum}"/>

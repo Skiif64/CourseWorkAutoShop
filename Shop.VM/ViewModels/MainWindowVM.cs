@@ -6,12 +6,14 @@ using Shop.VM.Commands;
 using Shop.VM.ViewModels.Base;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Windows.Input;
 
 namespace Shop.VM.ViewModels
 {
-    public class MainWindowVM : ViewModel
+    public class MainWindowVM : ViewModel, INotifyCollectionChanged
     {
         private ShopContext _db;
         private IDataService _data;
@@ -29,7 +31,13 @@ namespace Shop.VM.ViewModels
             get => _deal;
             set => Set(ref _deal, value);
         }
-        public decimal TotalSum => _vehicles.Sum(x => x.Price);
+        private decimal _totalSum;
+        public decimal TotalSum
+        {
+            get => _totalSum;
+            set => Set(ref _totalSum, value);
+        }
+
 
         private string _customerFullName;
         public string CustomerFullName
@@ -57,11 +65,17 @@ namespace Shop.VM.ViewModels
             get => _selectedVehicle;
             set => Set(ref _selectedVehicle, value);
         }
-        private List<Vehicle> _vehiclesCart;
-        public List<Vehicle> VehiclesCart
+        private ObservableCollection<Vehicle> _vehiclesCart;
+        public ObservableCollection<Vehicle> VehiclesCart
         {
             get => _vehiclesCart;
             set => Set(ref _vehiclesCart, value);
+        }
+        private Vehicle _selectedCartVehicle;
+        public Vehicle SelectedCartVehicle
+        {
+            get => _selectedCartVehicle;
+            set => Set(ref _selectedCartVehicle, value);
         }
         #endregion
         #region Команды
@@ -71,13 +85,29 @@ namespace Shop.VM.ViewModels
             new LambdaCommand(OnAddVehicleCommandExecuted, CanAddVehicleCommandExecute);
         private void OnAddVehicleCommandExecuted(object obj)
         {
-            VehiclesCart.Add(SelectedVehicle);
+            _vehiclesCart.Add(SelectedVehicle);
+            TotalSum = VehiclesCart.Sum(x => x.Price);
         }
         private bool CanAddVehicleCommandExecute(object arg) => SelectedVehicle != null;
-        
+
+        #endregion
+        #region Удаление авто из договора
+        private ICommand _removeVehicleCommand;
+        public ICommand RemoveVehicleCommand => _removeVehicleCommand ??=
+            new LambdaCommand(OnRemoveVehicleCommandExecuted, CanRemoveVehicleCommandExecute);
+        private void OnRemoveVehicleCommandExecuted(object obj)
+        {
+            VehiclesCart.Remove(SelectedCartVehicle);
+            TotalSum = VehiclesCart.Sum(x => x.Price);
+        }
+        private bool CanRemoveVehicleCommandExecute(object arg) => SelectedCartVehicle != null;
+
         #endregion
         #region Обновить
         private ICommand _updateCommand;
+
+        public event NotifyCollectionChangedEventHandler CollectionChanged;
+
         public ICommand UpdateCommand => _updateCommand ??=
             new LambdaCommand(OnUpdateCommandExecuted, CanUpdateCommandExecute);
         private void OnUpdateCommandExecuted(object obj)
@@ -86,7 +116,7 @@ namespace Shop.VM.ViewModels
             Customers = _data.Customers.GetAll().ToList();
         }
         private bool CanUpdateCommandExecute(object arg) => true;
-        
+
         #endregion
         #region Создание договора
 
@@ -107,6 +137,7 @@ namespace Shop.VM.ViewModels
 
             Vehicles = _data.Vehicles.GetAll().ToList();
             Customers = _data.Customers.GetAll().ToList();
+            VehiclesCart = new ObservableCollection<Vehicle>();
         }
     }
 }
