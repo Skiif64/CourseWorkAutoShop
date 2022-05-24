@@ -12,8 +12,9 @@ namespace Shop.Data
         public DbSet<ShipmentRequest> ShipmentRequests { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
         
-        public ShopContext()
+        public ShopContext(string connectionString = null)
         {
+            if (connectionString != null) _connectionString = connectionString;
             Database.EnsureDeleted();
             Database.EnsureCreated();
         }

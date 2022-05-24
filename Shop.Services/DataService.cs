@@ -10,7 +10,7 @@ namespace Shop.Services
 {
     public class DataService : IDataService
     {
-        private ShopContext _db;
+        private readonly ShopContext _db;
         public IRepository<Customer> Customers { get; }
         public IRepository<Deal> Deals { get; }
         public IRepository<ShipmentReport> ShipmentReports { get; }

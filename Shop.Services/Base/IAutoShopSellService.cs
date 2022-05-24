@@ -7,6 +7,6 @@ namespace Shop.Services.Base
 {
     public interface IAutoShopSellService
     {
-        void SellVehicle(VehiclesList vehicles);
+        void SellVehicle(VehiclesOrder vehicles);
     }
 }
