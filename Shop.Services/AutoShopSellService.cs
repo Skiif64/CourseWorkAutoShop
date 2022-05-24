@@ -1,4 +1,5 @@
 ﻿using Shop.Data.Entities;
+using Shop.Domain;
 using Shop.Services.Base;
 using System;
 using System.Collections.Generic;
@@ -6,23 +7,23 @@ using System.Linq;
 
 namespace Shop.Services
 {
-    public class AutoShopSellService
+    public class AutoShopSellService : IAutoShopSellService
     {
         private IDataService _data;
         public AutoShopSellService(IDataService data)
         {
             _data = data;
-        }
-        public void SellVehicle(Customer customer, List<Vehicle> vehicles)
+        }       
+
+        public void SellVehicle(VehiclesList vehicles)
         {
-            if (customer is null) throw new ArgumentNullException(nameof(customer), "Покупатель равен null.");
-            if (vehicles.Count==0) throw new ArgumentNullException(nameof(vehicles), "Список автомобилей пуст.");
-            var deal = CreateDeal(customer, vehicles);
+            if (vehicles.Customer is null) throw new ArgumentNullException(nameof(vehicles.Customer), "Покупатель равен null.");
+            if (vehicles.Count == 0) throw new ArgumentNullException(nameof(vehicles), "Список автомобилей пуст.");
+            var deal = CreateDeal(vehicles.Customer, vehicles.Vehicles);
             SaveDeal(deal);
-
         }
 
-        private Deal CreateDeal(Customer customer, List<Vehicle> vehicles)
+        private Deal CreateDeal(Customer customer, ICollection<Vehicle> vehicles)
         {
             var deal = new Deal
             {
