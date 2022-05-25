@@ -15,7 +15,7 @@ namespace Shop.Data
                 var lines = File.ReadAllLines(PATH);
                 _dbAdress = lines[0];
             }
-            return $@"Server={_dbAdress};Database=Crm;Trusted_Connection=True;";
+            return $@"Server={_dbAdress};Database=AutoShop;Trusted_Connection=True;";
         }
     }
 }
