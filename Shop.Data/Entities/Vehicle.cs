@@ -16,7 +16,7 @@ namespace Shop.Data.Entities
 
         public override string ToString()
         {
-            return $"{ManufacturerName} {ModelName}";
+            return $"{ManufacturerName} {ModelName} - Мощность: {Power}, Стоимость: {Price}";
         }
     }
 }

@@ -34,8 +34,8 @@ namespace Shop.VM.ViewModels
         }
 
 
-        private string _customerFullName;
-        public string CustomerFullName
+        private string _customerFullName = string.Empty;
+        public string CustomerFullName 
         {
             get => _customerFullName;
             set => Set(ref _customerFullName, value);
@@ -116,15 +116,9 @@ namespace Shop.VM.ViewModels
             };
             _sell.SellVehicle(order);
         }
-        private bool CanCreateDealCommandExecute(object arg) => VehiclesCart.Count != 0;
+        private bool CanCreateDealCommandExecute(object arg) => VehiclesCart.Count != 0 && CustomerFullName!=string.Empty;
         
-        #endregion
-        #region Отмена договора
-
-        #endregion
-        #region Просмотр договоров
-
-        #endregion
+        #endregion        
         #endregion
         public MainWindowVM()
         {
