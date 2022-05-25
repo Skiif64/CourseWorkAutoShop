@@ -47,12 +47,10 @@ namespace Shop.Data.Repository
             var dealVehs = _dealVehs.GetAll().ToList();
             
             foreach(var deal in deals)
-            {
-                var vss = new List<Vehicle>();
-                var v = dealVehs.Where(x=> x.DealId == deal.Id).Select(y=> y.Vehicle);
-                    vss.AddRange(v);                 
+            {               
+                var v = dealVehs.Where(x=> x.DealId == deal.Id).Select(y=> y.Vehicle);                             
                
-                deal.Vehicles = vss.ToList();
+                deal.Vehicles = v.ToList();
             }
             return deals;
         }
