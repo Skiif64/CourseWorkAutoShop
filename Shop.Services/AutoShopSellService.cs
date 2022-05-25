@@ -20,7 +20,17 @@ namespace Shop.Services
             if (vehicles.CustomerName is null) throw new ArgumentNullException(nameof(vehicles.CustomerName), "Покупатель равен null.");
             if (vehicles.Count == 0) throw new ArgumentNullException(nameof(vehicles), "Список автомобилей пуст.");
             var deal = CreateDeal(vehicles.CustomerName, vehicles.Vehicles);
-            SaveDeal(deal);
+            var vehs = new List<DealVehicles>();
+            foreach(var v in deal.Vehicles)
+            {
+                vehs.Add(new DealVehicles
+                {
+                    Deal = deal,
+                    Vehicle = v
+                });
+                
+            }
+            SaveDeal(deal, vehs);
         }
 
         private Deal CreateDeal(string customerName, ICollection<Vehicle> vehicles)
@@ -35,9 +45,10 @@ namespace Shop.Services
             return deal;
         }        
 
-        private void SaveDeal (Deal deal)
+        private void SaveDeal (Deal deal, List<DealVehicles> dealVeh)
         {
             _data.Deals.Add(deal);
+            _data.DealVehicles.AddRange(dealVeh);
             _data.Complete();
         }        
     }

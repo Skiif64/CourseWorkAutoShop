@@ -7,8 +7,7 @@ namespace Shop.Services.Base
     {
         
         IRepository<Deal> Deals { get; }
-        IRepository<ShipmentReport> ShipmentReports { get; }
-        IRepository<ShipmentRequest> ShipmentRequests { get; }
+        IRepository<DealVehicles> DealVehicles { get; }        
         IRepository<Vehicle> Vehicles { get; }
         int Complete();
     }

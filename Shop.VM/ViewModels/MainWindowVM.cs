@@ -45,14 +45,7 @@ namespace Shop.VM.ViewModels
         {
             get => _customerFullName;
             set => Set(ref _customerFullName, value);
-        }
-
-        private IEnumerable<Customer> _customers;
-        public IEnumerable<Customer> Customers
-        {
-            get => _customers;
-            set => Set(ref _customers, value);
-        }
+        }        
 
         private IEnumerable<Vehicle> _vehicles;
         public IEnumerable<Vehicle> Vehicles

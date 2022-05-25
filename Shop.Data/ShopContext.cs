@@ -7,14 +7,12 @@ namespace Shop.Data
     {
         private readonly string _connectionString = @"Server=localhost\SQLEXPRESS;Database=AutoShop;Trusted_Connection=True;";
         
-        public DbSet<Deal> Deals { get; set; }            
-        public DbSet<ShipmentReport> ShipmentReports { get; set; }
-        public DbSet<ShipmentRequest> ShipmentRequests { get; set; }
+        public DbSet<Deal> Deals { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
-        
-        public ShopContext(string connectionString = null)
-        {
-            if (connectionString != null) _connectionString = connectionString;
+        public DbSet<DealVehicles> DealVehicles { get; set; }
+
+        public ShopContext()
+        {            
             //Database.EnsureDeleted();
             Database.EnsureCreated();
         }

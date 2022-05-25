@@ -47,32 +47,7 @@ namespace TestConsole
                 {
                     Console.WriteLine($"Автомобиль: {v}");
                 }
-            }
-
-            var requesterModel = new AutoShopRequestVehicleService(data);
-            await requesterModel.CreateRequest(vehicles);
-            requesterModel.WaitTime = 10000;
-
-            foreach(var req in data.ShipmentRequests.GetAll())
-            {
-                Console.WriteLine($"Заказ номер: {req.Id}");
-                Console.WriteLine($"Дата заказа: {req.OpenTime}");
-                foreach(var v in req.Vehicles)
-                {
-                    Console.WriteLine($"Автомобиль: {v}");
-                }
-            }
-
-            foreach (var rep in data.ShipmentReports.GetAll())
-            {
-                Console.WriteLine($"Постака номер: {rep.Id}");
-                Console.WriteLine($"Дата поставки: {rep.ClosedTime}");
-                foreach (var v in rep.Vehicles)
-                {
-                    Console.WriteLine($"Автомобиль: {v}");
-                }
-            }
-
+            }  
         }
     }
 }

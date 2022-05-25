@@ -50,6 +50,7 @@ namespace Shop.VM.ViewModels
             var str = $"Договор №{deal.Id}\n" +
                 $"Дата заключения: {deal.OfferTime}\n" +
                 $"Заключен с покупателем: {deal.Customer}\n" +
+                $"На сумму {deal.TotalSum}\n" +
                 $"Автомобиль(ли): \n";
             foreach(var veh in deal.Vehicles)
             {
