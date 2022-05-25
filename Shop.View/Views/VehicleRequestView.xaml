@@ -6,11 +6,31 @@
         xmlns:vm ="clr-namespace:Shop.VM.ViewModels;assembly=Shop.VM"
         xmlns:local="clr-namespace:Shop.View.Views"
         mc:Ignorable="d"
-        Title="VehicleRequestView" Height="450" Width="800">
+        Title="Запрос авто" Height="250" Width="300">
     <Window.DataContext>
-        <vm:VehicleRequestVM/>
+        <vm:CreateVehicleVM/>
     </Window.DataContext>
     <Grid>
-        
+        <GroupBox Grid.Row="1" Header="Авто">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" Margin="3,3">
+                    <TextBlock Text="Производитель" Width="100"/>
+                    <TextBox Width="120" Text="{Binding Manufacturer}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="3,3">
+                    <TextBlock Text="Модель" Width="100"/>
+                    <TextBox Width="120" Text="{Binding Name}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="3,3">
+                    <TextBlock Text="Мощность" Width="100"/>
+                    <TextBox Width="120" Text="{Binding Power}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="3,3">
+                    <TextBlock Text="Цена" Width="100"/>
+                    <TextBox Width="120" Text="{Binding Price}"/>
+                </StackPanel>
+                <Button Content="Создать автомобиль" Command="{Binding CreateCommand}" Margin="5,3"/>
+            </StackPanel>
+        </GroupBox>
     </Grid>
 </Window>

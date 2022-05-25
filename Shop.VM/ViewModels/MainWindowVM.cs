@@ -19,13 +19,7 @@ namespace Shop.VM.ViewModels
         private ShopContext _db;
         private IDataService _data;
         private IAutoShopSellService _sell;
-        #region Привязки
-        private CreateVehicleVM _createVM;
-        public CreateVehicleVM CreateVM
-        {
-            get => _createVM;
-            set => Set(ref _createVM, value);
-        }
+        #region Привязки        
         private Deal _deal;
         public Deal Deal
         {
@@ -136,8 +130,7 @@ namespace Shop.VM.ViewModels
         {
             _db = new ShopContext();
             _data = new DataService(_db);
-            _sell = new AutoShopSellService(_data);
-            _createVM = new CreateVehicleVM(_data);                 
+            _sell = new AutoShopSellService(_data);                           
             VehiclesCart = new ObservableCollection<Vehicle>();
 
             Vehicles = _data.Vehicles.GetAll().ToList();

@@ -1,4 +1,5 @@
 ﻿using Shop.Data.Entities;
+using Shop.Services;
 using Shop.Services.Base;
 using Shop.VM.Commands;
 using Shop.VM.ViewModels.Base;
@@ -55,9 +56,9 @@ namespace Shop.VM.ViewModels
         private bool CanCreateCommandExecute(object arg) => true;
         #endregion
         #endregion
-        public CreateVehicleVM(IDataService data)
+        public CreateVehicleVM()
         {
-            _data = data;
+            _data = new DataService(new Data.ShopContext());
         }
     }
 }

@@ -5,14 +5,15 @@ namespace Shop.Data
 {  
     public class ShopContext : DbContext
     {
-        private readonly string _connectionString = @"Server=localhost\SQLEXPRESS;Database=AutoShop;Trusted_Connection=True;";
+        private readonly string _connectionString;
         
         public DbSet<Deal> Deals { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<DealVehicles> DealVehicles { get; set; }
 
         public ShopContext()
-        {            
+        {
+            _connectionString = ConnectionStringLoader.GetDBAdress();
             //Database.EnsureDeleted();
             Database.EnsureCreated();
         }

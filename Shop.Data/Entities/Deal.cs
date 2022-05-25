@@ -11,5 +11,9 @@ namespace Shop.Data.Entities
         public virtual ICollection<Vehicle> Vehicles { get; set; }
         public DateTime OfferTime { get; set; }
         public decimal TotalSum { get; set; }
+        public override string ToString()
+        {
+            return $"Договор №{Id}";
+        }
     }
 }
